@@ -1,0 +1,67 @@
+PHIẾU GIAO ĐỀ TÀI — DT056
+HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG — CƠ SỞ TẠI TP. HỒ CHÍ MINH
+Học phần INT13185 — Nhóm 03 — Giảng viên Hồ Nhựt Minh
+
+Sinh viên: Nguyễn Ngư Nhựt    MSSV: N24DCDT065    Lớp: D24CQDT01-N
+Mã đề: DT056
+Tên đề: Khoảng cách chỉnh sửa và dãy phép biến đổi
+Căn cứ: Chương 4, Bài tập chương 4, câu 35: Bài toán khoảng cách chỉnh sửa;
+trang in 112; trang PDF 124.
+
+ĐỀ BÀI
+Viết chương trình biến một xâu thành xâu khác bằng chèn, xóa hoặc thay một ký tự,
+sao cho dùng ít thao tác nhất. Mỗi thao tác có chi phí 1, giữ nguyên ký tự giống
+nhau không mất chi phí. Sinh viên lập bảng theo hai tiền tố, truy vết và kiểm rằng
+thực hiện các bước đã chọn thật sự tạo ra xâu đích.
+
+DỮ LIỆU VÀO
+Nhập hoặc khai báo X, Y bằng chữ cái Latin không dấu, độ dài mỗi xâu 0 đến 30.
+Xử lý theo ký tự, phân biệt hoa thường. Không có thao tác đổi chỗ hai ký tự và
+không có chi phí trọng số khác nhau.
+
+KẾT QUẢ RA
+In số thao tác nhỏ nhất và một dãy chèn, xóa, thay có mô tả rõ. Có thể in các xâu
+sau từng bước để kiểm kết quả.
+
+VÍ DỤ 1
+X = "CAT", Y = "CUT": hai ký tự C, T giữ nguyên, chỉ cần thay ký tự giữa.
+
+VÍ DỤ 2
+X = "A", Y = "": xâu đích rỗng nên xóa ký tự duy nhất của xâu nguồn.
+
+HƯỚNG DẪN THỰC HIỆN
+1. Đặt f[i, j] là số thao tác ít nhất biến i ký tự đầu X thành j ký tự đầu Y.
+2. Gán hàng 0 bằng 0, 1, …, n và cột 0 bằng 0, 1, …, m để biểu diễn chèn hoặc
+   xóa toàn bộ.
+3. Nếu ký tự bằng nhau lấy ô chéo; nếu khác, lấy 1 cộng nhỏ nhất trong ba khả
+   năng chèn, xóa, thay.
+4. Lưu hoặc nhận ra bước trước khi truy ngược; đảo các bước để có thứ tự biến đổi
+   từ X đến Y.
+5. Quy định cách mô tả vị trí khi xâu thay đổi, thực hiện lại dãy thao tác và kiểm
+   xâu cuối bằng Y.
+
+CÁC HÀM NÊN VIẾT
+khoang_cach_sua(X, Y)
+truy_vet_sua(X, Y, f)
+ap_dung_cac_buoc(X, buoc)
+
+NĂM CA CẦN KIỂM TRA
+1. X="", Y="": khoảng cách 0, danh sách thao tác rỗng.
+2. X="", Y="AB": khoảng cách 2 bằng hai lần chèn.
+3. X="ABC", Y="ABC": khoảng cách 0, không thay ký tự giống nhau.
+4. X="AB", Y="BA": khoảng cách 2, không được dùng đổi chỗ một lần.
+5. X="ABC", Y="AC": khoảng cách 1 bằng xóa B.
+
+PHÂN TÍCH VÀ NHẬN XÉT
+Với độ dài m, n, bảng có (m+1)(n+1) ô, mỗi ô xét tối đa ba lựa chọn nên thời gian
+và bộ nhớ O(mn). Truy vết tối đa m+n bước. Đếm số ô và từng loại phép sửa; phải
+phân biệt độ dài dãy thao tác với số ô của bảng. Nhiều dãy sửa tối ưu khác nhau
+vẫn được chấp nhận.
+
+YÊU CẦU THÊM SAU KHI PHẦN CƠ BẢN CHẠY ĐÚNG
+Tùy chọn: in nguyên bảng với nhãn hai xâu cho trường hợp độ dài tối đa 6 để giải
+thích các bước truy vết.
+
+SẢN PHẨM
+Mã nguồn, các kết quả chạy ví dụ và ca kiểm tra, một lần vết bằng tay, báo cáo
+theo mẫu môn học. Chạy từ bàn phím hoặc truyền trực tiếp các giá trị vào hàm.

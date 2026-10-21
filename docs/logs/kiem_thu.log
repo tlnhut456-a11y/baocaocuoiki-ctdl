@@ -1,0 +1,19 @@
+﻿Test Summary:                      |  Pass  Total  Time
+DT056 - khoảng cách chỉnh sửa      | 21803  21803  0.4s
+  VD01: CAT → CUT                  |     6      6  0.0s
+  VD02: A → xâu rỗng               |     6      6  0.0s
+  P01: rỗng → rỗng                 |     6      6  0.0s
+  P02: rỗng → AB                   |     6      6  0.0s
+  P03: ABC → ABC                   |     6      6  0.0s
+  P04: AB → BA                     |     6      6  0.0s
+  P05: ABC → AC                    |     6      6  0.0s
+  TK01: SUNDAY → SATURDAY          |     6      6  0.0s
+  TK02: kitten → sitting           |     6      6  0.0s
+  B01: A → B                       |     6      6  0.0s
+  B02: xâu dài 30                  |     7      7  0.0s
+  B03: AAAA → AA                   |     6      6  0.0s
+  LOI01: dữ liệu không hợp lệ      |     6      6  0.1s
+  Bất biến trên dữ liệu ngẫu nhiên | 21724  21724  0.3s
+
+ĐÃ CHẠY 13 CA (2 ví dụ, 5 ca phiếu, 2 tự thiết kế, 3 biên, 1 dữ liệu sai)
+và 400 cặp ngẫu nhiên để kiểm bất biến.

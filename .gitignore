@@ -1,0 +1,9 @@
+# Loai tru cac tep cua he dieu hanh va thu muc lam viec
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Loai log tam, khong loai log trong docs/logs
+*.tmp
+*.bak
+*.swp

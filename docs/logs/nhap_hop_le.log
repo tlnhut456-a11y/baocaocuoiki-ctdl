@@ -1,0 +1,15 @@
+﻿==============================================================
+NHẬP DỮ LIỆU TỪ BÀN PHÍM
+==============================================================
+Nhập X (Enter nếu xâu rỗng): Nhập Y (Enter nếu xâu rỗng): 
+X = "CAT"  (3 ký tự)
+Y = "CUT"  (3 ký tự)
+Khoảng cách sửa : 1
+Số thao tác     : 1
+Dãy thao tác    : thay vị trí 2: 'A' → 'U'
+Các xâu sau từng bước:
+   1. "CAT"
+   2. "CUT"
+Kiểm lại        : xâu cuối BẰNG Y
+
+KẾT LUẬN: ĐẠT

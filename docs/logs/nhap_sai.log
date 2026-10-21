@@ -1,0 +1,6 @@
+﻿==============================================================
+NHẬP DỮ LIỆU TỪ BÀN PHÍM
+==============================================================
+Nhập X (Enter nếu xâu rỗng): Nhập Y (Enter nếu xâu rỗng): 
+LOẠI BỎ DỮ LIỆU: Y có ký tự không hợp lệ '1' tại vị trí 2 (chỉ nhận A–Z, a–z)
+KẾT LUẬN: KHÔNG ĐẠT (dữ liệu không hợp lệ)

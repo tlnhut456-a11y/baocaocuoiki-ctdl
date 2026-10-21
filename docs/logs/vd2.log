@@ -1,0 +1,19 @@
+﻿==============================================================
+VÍ DỤ 2 — xâu đích rỗng nên xóa ký tự duy nhất
+==============================================================
+X = "A"  (1 ký tự)
+Y = ""  (0 ký tự)
+Khoảng cách sửa : 1
+Số thao tác     : 1
+Dãy thao tác    : xóa vị trí 1: 'A'
+Các xâu sau từng bước:
+   1. "A"
+   2. ""
+Kiểm lại        : xâu cuối BẰNG Y
+
+Bảng quy hoạch động f[i, j]:
+      ε   
+ε   |   0
+A   |   1
+
+KẾT LUẬN: ĐẠT

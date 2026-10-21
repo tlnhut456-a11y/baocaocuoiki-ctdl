@@ -1,0 +1,69 @@
+﻿==============================================================
+NĂM CA KIỂM TRÊN PHIẾU DT056
+==============================================================
+CA P1
+X = ""  (0 ký tự)
+Y = ""  (0 ký tự)
+Khoảng cách sửa : 0
+Số thao tác     : 0
+Dãy thao tác    : (không có thao tác)
+Các xâu sau từng bước:
+   1. ""
+Kiểm lại        : xâu cuối BẰNG Y
+
+  -> ĐẠT
+
+CA P2
+X = ""  (0 ký tự)
+Y = "AB"  (2 ký tự)
+Khoảng cách sửa : 2
+Số thao tác     : 2
+Dãy thao tác    : chèn vị trí 1: 'A'; chèn vị trí 2: 'B'
+Các xâu sau từng bước:
+   1. ""
+   2. "A"
+   3. "AB"
+Kiểm lại        : xâu cuối BẰNG Y
+
+  -> ĐẠT
+
+CA P3
+X = "ABC"  (3 ký tự)
+Y = "ABC"  (3 ký tự)
+Khoảng cách sửa : 0
+Số thao tác     : 0
+Dãy thao tác    : (không có thao tác)
+Các xâu sau từng bước:
+   1. "ABC"
+Kiểm lại        : xâu cuối BẰNG Y
+
+  -> ĐẠT
+
+CA P4
+X = "AB"  (2 ký tự)
+Y = "BA"  (2 ký tự)
+Khoảng cách sửa : 2
+Số thao tác     : 2
+Dãy thao tác    : thay vị trí 1: 'A' → 'B'; thay vị trí 2: 'B' → 'A'
+Các xâu sau từng bước:
+   1. "AB"
+   2. "BB"
+   3. "BA"
+Kiểm lại        : xâu cuối BẰNG Y
+
+  -> ĐẠT
+
+CA P5
+X = "ABC"  (3 ký tự)
+Y = "AC"  (2 ký tự)
+Khoảng cách sửa : 1
+Số thao tác     : 1
+Dãy thao tác    : xóa vị trí 2: 'B'
+Các xâu sau từng bước:
+   1. "ABC"
+   2. "AC"
+Kiểm lại        : xâu cuối BẰNG Y
+
+  -> ĐẠT
+
+TỔNG KẾT: 5/5 ca đạt

@@ -1,0 +1,21 @@
+﻿==============================================================
+VÍ DỤ 1 — thay một ký tự ở giữa
+==============================================================
+X = "CAT"  (3 ký tự)
+Y = "CUT"  (3 ký tự)
+Khoảng cách sửa : 1
+Số thao tác     : 1
+Dãy thao tác    : thay vị trí 2: 'A' → 'U'
+Các xâu sau từng bước:
+   1. "CAT"
+   2. "CUT"
+Kiểm lại        : xâu cuối BẰNG Y
+
+Bảng quy hoạch động f[i, j]:
+      ε   C   U   T   
+ε   |   0   1   2   3
+C   |   1   0   1   2
+A   |   2   1   1   2
+T   |   3   2   2   1
+
+KẾT LUẬN: ĐẠT

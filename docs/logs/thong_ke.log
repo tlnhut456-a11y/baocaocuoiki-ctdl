@@ -1,0 +1,14 @@
+﻿KHẢO SÁT BA QUY MÔ — DT056
+Cặp xâu sinh ngẫu nhiên trên bảng chữ A–H, cùng độ dài m = n = 10, 20, 30.
+Thời gian là trung vị của 5 đợt đo, mỗi đợt vài trăm lần gọi.
+
+Q    m=n    số ô     bước vết  thời gian    tỉ lệ  
+------------------------------------------------------
+Q1   10     121      8         1.022 us     -      
+Q2   20     441      16        3.423 us     3.35x  
+Q3   30     961      22        7.405 us     2.16x  
+
+Số ô bảng tăng từ 121 lên 441 rồi 961, đúng bằng (m+1)(n+1).
+Số bước truy vết không vượt m + n = 20, 40, 60.
+Thời gian tăng theo số ô; ở quy mô nhỏ phép đo còn nhiễu nên căn cứ
+chính vẫn là số ô và số bước truy vết, khớp dự đoán O(mn).
