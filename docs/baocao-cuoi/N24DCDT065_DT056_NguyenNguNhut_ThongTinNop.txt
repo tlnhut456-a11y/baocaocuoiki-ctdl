@@ -1,0 +1,39 @@
+THÔNG TIN NỘP ĐỀ TÀI CÁ NHÂN
+INT13185 — Nhóm 03
+
+Họ và tên: Nguyễn Ngư Nhựt
+MSSV: N24DCDT065
+Lớp: D24CQDT01-N
+Mã đề: DT056
+Tên đề: Khoảng cách chỉnh sửa và dãy phép biến đổi
+
+URL kho GitHub (đã công bố): https://github.com/tlnhut456-a11y/baocaocuoiki-ctdl
+SHA C đầy đủ của mã/test/input dùng chạy và chụp ảnh: fcb4d2e3b7f8c9a60bfd2cf89fa871ff2c4766e2
+Permalink tệp thuật toán chính tại C: https://github.com/tlnhut456-a11y/baocaocuoiki-ctdl/blob/fcb4d2e3b7f8c9a60bfd2cf89fa871ff2c4766e2/src/DeTai.jl
+Permalink tệp kiểm thử tại C: https://github.com/tlnhut456-a11y/baocaocuoiki-ctdl/blob/fcb4d2e3b7f8c9a60bfd2cf89fa871ff2c4766e2/test/kiem_thu.jl
+SHA S đầy đủ của phiên bản nộp cuối: b77199d2bf845f23152a09eaf5d907e3e5eee51f
+Xác nhận mã/test/input không đổi giữa C và S, hoặc mô tả phần đã chạy lại: S (b77199d) hơn C (fcb4d2e) đúng 10 tệp ảnh trong docs/anh_ket_qua và không sửa mã, test hay dữ liệu vào; đã clone S ra thư mục mới và chạy lại, kết quả trùng khớp.
+
+Ngôn ngữ và phiên bản: Julia 1.13.1 (chỉ thư viện chuẩn); Windows 11; VS Code 1.142.0 với terminal tích hợp
+Lệnh chạy ví dụ 1: julia main.jl vd1
+Lệnh chạy ví dụ 2: julia main.jl vd2
+Lệnh nhập dữ liệu mới: julia main.jl nhap
+Lệnh biên dịch (nếu dùng C++): Không áp dụng (Julia chạy trực tiếp)
+Lệnh chạy bộ kiểm thử: julia test/kiem_thu.jl
+Số ca kiểm độc lập: 13 ca (2 ví dụ, 5 ca phiếu, 2 tự thiết kế, 3 biên, 1 dữ liệu sai) + 400 cặp xâu ngẫu nhiên
+Số phép kiểm đạt / tổng số phép kiểm: 21.803 / 21.803 (79 phép theo ca + 21.724 phép bất biến)
+
+Đã có đủ 11 ảnh cá nhân trong báo cáo và ZIP (Có/Chưa): Có — 11/11 ảnh A01–A11 chụp thật trong VS Code; A03P là ảnh phụ ở Phụ lục B
+Ảnh A10 clone/chạy C đã có (Có/Chưa): Có — Hình 4.10, chạy lại từ commit b77199d, ra 21803/21803
+Đã clone SHA S vào thư mục mới và chạy lại (Có/Chưa): Có — 13/13 ca đạt, 21.803/21.803 phép kiểm đạt
+Tóm tắt kết quả chạy lại hai ví dụ và bộ test từ S: ví dụ 1 ra khoảng cách 1 (CAT → CUT), ví dụ 2 ra khoảng cách 1 (A → rỗng), bộ test 13/13 ca đạt, 21.803/21.803 phép kiểm đạt — đúng như bản nộp
+Giảng viên truy cập được GitHub và permalink (Có/Chưa): Có — kho công khai, nhánh main ở commit b77199d, hai permalink mở được bằng trình duyệt ẩn danh
+
+Tên tệp Word nộp: N24DCDT065_DT056_NguyenNguNhut_BaoCao.docx
+Tên tệp PDF nộp: N24DCDT065_DT056_NguyenNguNhut_BaoCao.pdf
+Tên tệp ZIP mã nguồn nộp: N24DCDT065_DT056_NguyenNguNhut_MaNguon.zip
+Ngày hoàn tất: 23/10/2026
+
+Ghi chú: Bốn tệp trên nằm trong thư mục 00_NOP_3_BAN\N24DCDT065_DT056_NguyenNguNhut\3_NOP_CUOI.
+Báo cáo tiến độ 1 để trong thư mục TIEN_DO_1 chỉ để đối chiếu, không nộp.
+Mười một ảnh A01–A11 đều đã có trong báo cáo và ZIP; SHA S và trang commit đã cập nhật ở mục 4.9 và trong tệp này.

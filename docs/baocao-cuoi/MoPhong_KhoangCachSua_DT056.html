@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mô phỏng khoảng cách chỉnh sửa — DT056</title>
+<style>
+  :root{
+    --nen:#f6f7fb; --the:#ffffff; --vien:#dfe3ec; --chu:#1d2330; --mo:#5b6478;
+    --xanh:#2f6fed; --xanh-nhat:#e8efff; --vang:#fff4d6; --hong:#ffe3e3;
+    --luc:#e3f6e8; --tim:#efe6ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--nen); color:var(--chu);
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.5;
+  }
+  header{
+    background:linear-gradient(120deg,#1f3b73,#2f6fed); color:#fff;
+    padding:22px 28px 18px;
+  }
+  header h1{margin:0 0 4px; font-size:22px; letter-spacing:.2px}
+  header p{margin:0; opacity:.9; font-size:14px}
+  .wrap{max-width:1180px; margin:0 auto; padding:22px 20px 60px}
+  .luoi{display:grid; grid-template-columns:360px 1fr; gap:20px; align-items:start}
+  @media (max-width:980px){ .luoi{grid-template-columns:1fr} }
+  .the{
+    background:var(--the); border:1px solid var(--vien); border-radius:12px;
+    padding:16px 16px 14px; box-shadow:0 1px 2px rgba(20,30,60,.04);
+  }
+  .the h2{margin:0 0 12px; font-size:15px; text-transform:uppercase; letter-spacing:.6px; color:var(--mo)}
+  label{display:block; font-size:13px; color:var(--mo); margin:10px 0 4px}
+  input[type=text]{
+    width:100%; padding:9px 11px; font-size:15px; font-family:ui-monospace,Consolas,monospace;
+    border:1px solid var(--vien); border-radius:8px; background:#fbfcff; color:var(--chu);
+  }
+  input[type=text]:focus{outline:2px solid var(--xanh-nhat); border-color:var(--xanh)}
+  .hang{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+  button{
+    padding:9px 14px; font-size:13.5px; border-radius:8px; border:1px solid var(--vien);
+    background:#fff; color:var(--chu); cursor:pointer; transition:.15s;
+  }
+  button:hover{border-color:var(--xanh); color:var(--xanh)}
+  button.chinh{background:var(--xanh); border-color:var(--xanh); color:#fff; font-weight:600}
+  button.chinh:hover{background:#245bd0; color:#fff}
+  button:disabled{opacity:.45; cursor:not-allowed}
+  .vi-du button{font-size:12.5px; padding:6px 10px}
+  .dieu-khien{margin-top:14px; padding-top:12px; border-top:1px dashed var(--vien)}
+  .dieu-khien .hang{justify-content:space-between; align-items:center}
+  input[type=range]{width:100%}
+  .nhom{font-size:12.5px; color:var(--mo); margin:14px 0 6px; font-weight:600}
+  .kq{margin-top:16px; padding-top:12px; border-top:1px dashed var(--vien)}
+  .so-lon{font-size:34px; font-weight:700; color:var(--xanh); line-height:1.1}
+  .so-lon span{font-size:14px; color:var(--mo); font-weight:400}
+  .ds-buoc{margin:10px 0 0; padding:0; list-style:none; font-size:13.5px}
+  .ds-buoc li{
+    padding:6px 9px; border-radius:7px; background:#f7f9ff; border:1px solid #e8edf9;
+    margin-bottom:6px; font-family:ui-monospace,Consolas,monospace;
+  }
+  .ds-buoc li b{font-family:inherit; color:var(--xanh)}
+  .xau{font-family:ui-monospace,Consolas,monospace}
+  .bang-bao{overflow:auto; padding-bottom:6px}
+  table.f{border-collapse:separate; border-spacing:3px; margin:6px auto 2px}
+  table.f th, table.f td{
+    min-width:42px; height:38px; text-align:center; font-family:ui-monospace,Consolas,monospace;
+    font-size:14px; border-radius:7px;
+  }
+  table.f th{color:var(--mo); font-weight:600; background:#f2f5fc}
+  table.f th.goc{background:transparent}
+  table.f td{background:#fff; border:1px solid var(--vien); color:#aeb6c8; transition:background .18s, color .18s, transform .18s}
+  table.f td.co{color:var(--chu); font-weight:600}
+  table.f td.dang{background:var(--vang); border-color:#e7c86a; transform:scale(1.06); color:#7a5a00}
+  table.f td.ung{background:#eef4ff; border-color:#b9cdf7; color:#2f6fed}
+  table.f td.duong{background:var(--xanh); border-color:var(--xanh); color:#fff; font-weight:700}
+  table.f td.duong-ung{background:#cfe0ff; border-color:#7ea7f5; color:#123a86; font-weight:700}
+  .cong-thuc{
+    margin-top:12px; padding:10px 12px; background:#f8faff; border:1px dashed #cfd9f0;
+    border-radius:9px; font-family:ui-monospace,Consolas,monospace; font-size:13.5px;
+    color:#26324a; min-height:44px;
+  }
+  .cong-thuc .nhan{color:var(--mo)}
+  .chu-thich{display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--mo); margin-top:10px}
+  .chu-thich i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-1px}
+  .c-ung{background:#eef4ff; border:1px solid #b9cdf7}
+  .c-dang{background:var(--vang); border:1px solid #e7c86a}
+  .c-duong{background:var(--xanh)}
+  .ghi-chu{font-size:12.5px; color:var(--mo); margin-top:10px}
+  .canh-bao{color:#b42318; font-size:13px; margin-top:8px; display:none}
+  footer{max-width:1180px; margin:0 auto; padding:0 20px 40px; color:var(--mo); font-size:12.5px}
+  .so-lieu{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:13px; color:var(--mo)}
+  .so-lieu b{color:var(--chu)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Mô phỏng khoảng cách chỉnh sửa — DT056</h1>
+  <p>Biến xâu X thành xâu Y bằng ít thao tác chèn, xóa, thay nhất · Nguyễn Ngư Nhựt — N24DCDT065</p>
+</header>
+
+<div class="wrap">
+  <div class="luoi">
+    <section class="the">
+      <h2>Dữ liệu vào</h2>
+      <label for="x">Xâu nguồn X (A–Z, a–z, tối đa 30)</label>
+      <input id="x" type="text" value="CAT" maxlength="30" spellcheck="false" autocomplete="off">
+      <label for="y">Xâu đích Y (A–Z, a–z, tối đa 30)</label>
+      <input id="y" type="text" value="CUT" maxlength="30" spellcheck="false" autocomplete="off">
+      <div class="canh-bao" id="loi"></div>
+
+      <div class="nhom">Ví dụ có sẵn</div>
+      <div class="hang vi-du">
+        <button data-x="CAT" data-y="CUT">CAT → CUT</button>
+        <button data-x="A" data-y="">A → rỗng</button>
+        <button data-x="AB" data-y="BA">AB → BA</button>
+        <button data-x="SUNDAY" data-y="SATURDAY">SUNDAY → SATURDAY</button>
+        <button data-x="kitten" data-y="sitting">kitten → sitting</button>
+      </div>
+
+      <div class="hang" style="margin-top:14px">
+        <button class="chinh" id="chay">Chạy mô phỏng</button>
+        <button id="lai">Xem lại</button>
+      </div>
+
+      <div class="dieu-khien">
+        <div class="hang">
+          <span style="font-size:13px;color:#5b6478">Tốc độ</span>
+          <input id="tocdo" type="range" min="0" max="90" value="45" style="flex:1;max-width:170px">
+        </div>
+        <div class="ghi-chu">Kéo sang phải để chạy nhanh, sang trái để chạy chậm.</div>
+      </div>
+
+      <div class="kq">
+        <div class="nhom" style="margin-top:0">Kết quả</div>
+        <div class="so-lon" id="kc">—</div>
+        <ul class="ds-buoc" id="buoc"></ul>
+        <div class="so-lieu">
+          <span>Ô bảng: <b id="so-o">—</b></span>
+          <span>Bước thao tác: <b id="so-buoc">—</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="the">
+      <h2>Bảng quy hoạch động f[i, j]</h2>
+      <div class="bang-bao" id="khung-bang"></div>
+      <div class="cong-thuc" id="cong-thuc">
+        Chọn một ví dụ rồi bấm <b>Chạy mô phỏng</b> để xem từng ô được tính.
+      </div>
+      <div class="chu-thich">
+        <span><i class="c-ung"></i>ba ô dùng để tính</span>
+        <span><i class="c-dang"></i>ô đang xét</span>
+        <span><i class="c-duong"></i>đường truy vết</span>
+      </div>
+      <div class="ghi-chu">
+        f[i, j] là số thao tác ít nhất biến i ký tự đầu của X thành j ký tự đầu của Y.
+        Ô cuối cùng f[m, n] là đáp án.
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  Trang mô phỏng đi kèm báo cáo DT056, học phần INT13185. Thuật toán và quy ước vị trí
+  giống hệt bản cài Julia trong <code>src/DeTai.jl</code>.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var oX = $("x"), oY = $("y"), oLoi = $("loi");
+  var oKhung = $("khung-bang"), oCongThuc = $("cong-thuc");
+  var oKc = $("kc"), oBuoc = $("buoc"), oSoO = $("so-o"), oSoBuoc = $("so-buoc");
+  var oChay = $("chay"), oLai = $("lai"), oTocDo = $("tocdo");
+  var henGio = null;
+
+  function chuCaiHopLe(s){
+    for (var i = 0; i < s.length; i++){
+      var c = s[i];
+      if (!((c >= "A" && c <= "Z") || (c >= "a" && c <= "z"))) return false;
+    }
+    return true;
+  }
+
+  function tinhBang(X, Y){
+    var m = X.length, n = Y.length;
+    var f = [], i, j;
+    for (i = 0; i <= m; i++){
+      f.push(new Array(n + 1).fill(0));
+    }
+    for (i = 1; i <= m; i++) f[i][0] = i;
+    for (j = 1; j <= n; j++) f[0][j] = j;
+    var thuTu = [];
+    for (i = 1; i <= m; i++){
+      for (j = 1; j <= n; j++){
+        var giu = f[i-1][j-1] + (X[i-1] === Y[j-1] ? 0 : 1);
+        var xoa = f[i-1][j] + 1;
+        var chen = f[i][j-1] + 1;
+        f[i][j] = Math.min(giu, xoa, chen);
+        thuTu.push({i:i, j:j, giu:giu, xoa:xoa, chen:chen, chon:f[i][j]});
+      }
+    }
+    return {f:f, thuTu:thuTu, m:m, n:n};
+  }
+
+  function truyVet(X, Y, f){
+    var i = X.length, j = Y.length, ds = [];
+    while (i > 0 || j > 0){
+      if (i > 0 && j > 0 && X[i-1] === Y[j-1] && f[i][j] === f[i-1][j-1]){
+        i--; j--;
+      } else if (i > 0 && j > 0 && f[i][j] === f[i-1][j-1] + 1){
+        ds.push({loai:"thay", viTri:j, cu:X[i-1], moi:Y[j-1], o:{i:i, j:j}});
+        i--; j--;
+      } else if (i > 0 && f[i][j] === f[i-1][j] + 1){
+        ds.push({loai:"xoa", viTri:j+1, cu:X[i-1], moi:"", o:{i:i, j:j}});
+        i--;
+      } else {
+        ds.push({loai:"chen", viTri:j, cu:"", moi:Y[j-1], o:{i:i, j:j}});
+        j--;
+      }
+    }
+    return ds.reverse();
+  }
+
+  function apDung(X, ds){
+    var a = X.split(""), lichSu = [X], k, b;
+    for (k = 0; k < ds.length; k++){
+      b = ds[k];
+      if (b.loai === "thay") a[b.viTri-1] = b.moi;
+      else if (b.loai === "xoa") a.splice(b.viTri-1, 1);
+      else a.splice(b.viTri-1, 0, b.moi);
+      lichSu.push(a.join(""));
+    }
+    return lichSu;
+  }
+
+  function moTa(b){
+    if (b.loai === "thay") return "thay vị trí " + b.viTri + ": '" + b.cu + "' → '" + b.moi + "'";
+    if (b.loai === "xoa") return "xóa vị trí " + b.viTri + ": '" + b.cu + "'";
+    return "chèn vị trí " + b.viTri + ": '" + b.moi + "'";
+  }
+
+  function dungBang(m, n, X, Y){
+    var html = ["<table class='f'>"];
+    html.push("<tr><th class='goc'>i \\ j</th><th>ε</th>");
+    for (var j = 1; j <= n; j++) html.push("<th>" + Y[j-1] + "</th>");
+    html.push("</tr>");
+    for (var i = 0; i <= m; i++){
+      html.push("<tr><th>" + (i === 0 ? "ε" : X[i-1]) + "</th>");
+      for (j = 0; j <= n; j++){
+        html.push("<td id='o-" + i + "-" + j + "'>" + (i === 0 || j === 0 ? (i || j) : "") + "</td>");
+      }
+      html.push("</tr>");
+    }
+    html.push("</table>");
+    oKhung.innerHTML = html.join("");
+  }
+
+  function o(i, j){ return document.getElementById("o-" + i + "-" + j); }
+
+  function xoaMau(){
+    var ds = oKhung.querySelectorAll("td");
+    for (var k = 0; k < ds.length; k++) ds[k].className = ds[k].textContent ? "co" : "";
+  }
+
+  function dungLai(){
+    if (henGio){ clearTimeout(henGio); henGio = null; }
+    oChay.disabled = false;
+    oKc.textContent = "—";
+    oBuoc.innerHTML = "";
+    oSoO.textContent = "—";
+    oSoBuoc.textContent = "—";
+    oCongThuc.innerHTML = "Chọn một ví dụ rồi bấm <b>Chạy mô phỏng</b> để xem từng ô được tính.";
+  }
+
+  function chay(){
+    dungLai();
+    var X = oX.value, Y = oY.value;
+    if (!chuCaiHopLe(X) || !chuCaiHopLe(Y)){
+      oLoi.style.display = "block";
+      oLoi.textContent = "Chỉ nhận chữ cái Latin không dấu (A–Z, a–z).";
+      return;
+    }
+    oLoi.style.display = "none";
+
+    var kq = tinhBang(X, Y), f = kq.f;
+    dungBang(kq.m, kq.n, X, Y);
+
+    var dsBuoc = truyVet(X, Y, f);
+    var lichSu = apDung(X, dsBuoc);
+
+    oKc.innerHTML = f[kq.m][kq.n] + " <span>thao tác</span>";
+    oSoO.textContent = (kq.m + 1) * (kq.n + 1);
+    oSoBuoc.textContent = dsBuoc.length;
+
+    var li = "";
+    for (var k = 0; k < dsBuoc.length; k++){
+      li += "<li><b>" + (k+1) + ".</b> " + moTa(dsBuoc[k]) + "</li>";
+    }
+    oBuoc.innerHTML = dsBuoc.length ? li : "<li>(không có thao tác)</li>";
+
+    var doTre = 100 - Number(oTocDo.value);
+    var dem = 0;
+    oChay.disabled = true;
+
+    function buocTiep(){
+      if (dem > 0){
+        xoaMau();
+        var truoc = kq.thuTu[dem-1];
+        o(truoc.i, truoc.j).className = "co";
+      }
+      if (dem >= kq.thuTu.length){
+        oChay.disabled = false;
+        veDuong(dsBuoc);
+        return;
+      }
+      var s = kq.thuTu[dem];
+      xoaMau();
+      if (s.i > 0 && s.j > 0) o(s.i-1, s.j-1).className = "ung";
+      if (s.i > 0) o(s.i-1, s.j).className = "ung";
+      if (s.j > 0) o(s.i, s.j-1).className = "ung";
+      var c = o(s.i, s.j);
+      c.textContent = s.chon;
+      c.className = "dang";
+      oCongThuc.innerHTML =
+        "<span class='nhan'>ô (" + s.i + ", " + s.j + "):</span> " +
+        "giữ/thay = " + s.giu + " · xóa = " + s.xoa + " · chèn = " + s.chen +
+        " → chọn <b>" + s.chon + "</b>";
+      dem++;
+      henGio = setTimeout(buocTiep, doTre);
+    }
+    buocTiep();
+  }
+
+  function veDuong(dsBuoc){
+    var i = oX.value.length, j = oY.value.length;
+    var o0 = o(i, j);
+    if (o0) o0.className = "duong";
+
+    var dsO = [];
+    var k;
+    for (k = 0; k < dsBuoc.length; k++) dsO.push(dsBuoc[k].o);
+    for (k = 0; k < dsO.length; k++){
+      var s = dsO[k];
+      var t = o(s.i, s.j);
+      if (t) t.className = "duong";
+      if (s.i > 0 && s.j > 0 && oX.value[s.i-1] === oY.value[s.j-1] && !dsBuoc.some(function(b, idx){
+            return idx <= k && b.o.i === s.i && b.o.j === s.j; })){
+        var d = o(s.i-1, s.j-1);
+        if (d) d.className = "duong-ung";
+      }
+    }
+
+    var nhip = 220, chiSo = 0;
+    function nhay(){
+      if (chiSo < dsO.length){
+        var s = dsO[chiSo];
+        var t = o(s.i, s.j);
+        if (t) t.className = "duong";
+        chiSo++;
+        setTimeout(nhay, nhip);
+      }
+    }
+    nhay();
+  }
+
+  oChay.addEventListener("click", chay);
+  oLai.addEventListener("click", function(){ dungLai(); chay(); });
+  oX.addEventListener("keydown", function(e){ if (e.key === "Enter") chay(); });
+  oY.addEventListener("keydown", function(e){ if (e.key === "Enter") chay(); });
+
+  var dsNut = document.querySelectorAll(".vi-du button");
+  for (var k = 0; k < dsNut.length; k++){
+    dsNut[k].addEventListener("click", function(){
+      oX.value = this.getAttribute("data-x");
+      oY.value = this.getAttribute("data-y");
+      chay();
+    });
+  }
+
+  var X0 = oX.value, Y0 = oY.value;
+  dungBang(X0.length, Y0.length, X0, Y0);
+})();
+</script>
+</body>
+</html>
