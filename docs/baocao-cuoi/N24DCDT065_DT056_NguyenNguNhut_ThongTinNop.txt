@@ -1,4 +1,4 @@
-THÔNG TIN NỘP ĐỀ TÀI CÁ NHÂN
+﻿THÔNG TIN NỘP ĐỀ TÀI CÁ NHÂN
 INT13185 — Nhóm 03
 
 Họ và tên: Nguyễn Ngư Nhựt
@@ -27,7 +27,7 @@ Số phép kiểm đạt / tổng số phép kiểm: 21.803 / 21.803 (79 phép t
 Ảnh A10 clone/chạy C đã có (Có/Chưa): Có — Hình 4.10, chạy lại từ commit b77199d, ra 21803/21803
 Đã clone SHA S vào thư mục mới và chạy lại (Có/Chưa): Có — 13/13 ca đạt, 21.803/21.803 phép kiểm đạt
 Tóm tắt kết quả chạy lại hai ví dụ và bộ test từ S: ví dụ 1 ra khoảng cách 1 (CAT → CUT), ví dụ 2 ra khoảng cách 1 (A → rỗng), bộ test 13/13 ca đạt, 21.803/21.803 phép kiểm đạt — đúng như bản nộp
-Giảng viên truy cập được GitHub và permalink (Có/Chưa): Có — kho công khai, nhánh main ở commit b77199d, hai permalink mở được bằng trình duyệt ẩn danh
+Giảng viên truy cập được GitHub và permalink (Có/Chưa): Có — kho công khai; bản nộp ở commit b77199d (sau đó có thêm commit tài liệu), hai permalink mở được bằng trình duyệt ẩn danh
 
 Tên tệp Word nộp: N24DCDT065_DT056_NguyenNguNhut_BaoCao.docx
 Tên tệp PDF nộp: N24DCDT065_DT056_NguyenNguNhut_BaoCao.pdf
@@ -37,3 +37,4 @@ Ngày hoàn tất: 23/10/2026
 Ghi chú: Bốn tệp trên nằm trong thư mục 00_NOP_3_BAN\N24DCDT065_DT056_NguyenNguNhut\3_NOP_CUOI.
 Báo cáo tiến độ 1 để trong thư mục TIEN_DO_1 chỉ để đối chiếu, không nộp.
 Mười một ảnh A01–A11 đều đã có trong báo cáo và ZIP; SHA S và trang commit đã cập nhật ở mục 4.9 và trong tệp này.
+
